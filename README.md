@@ -73,16 +73,42 @@ The dashboard is structured into several key sections, each designed to highligh
 
 **1. Cover Page/General Summary**
 
-- Project title
+Project title
   
 ![Tittle](https://github.com/Lumikter/My_Spotify_Listening_Data_Analysis/blob/main/Visualitations/tittle.png)
 
-- Filters
+Filters
+  
+The filter panel provides a powerful tool for segmenting and customizing the visualization of your musical data. 
+
+- Date Range: This filter allows analyze trends over time, identify listening spikes during specific periods, and compare different years or time frames. Ideal for observing listening patterns related to events (e.g., holidays, album releases).
+
+- Genre: Enables to focus on specific genres to understand their relative contribution to your total listening time. Helps identify whether the musical preferences have shifted over time.
+
+- Subgenre: Offers a more granular analysis, helping to uncover which subgenres dominate your preferences.
+
+- Artist: Helps track trends in your consumption of music by favorite artists and how it evolves over time.
+
+- Country: Useful for understanding your affinity for music from specific regions, highlighting whether your consumption is local, global, or focused on certain countries.
+
+- Decade: Helps identify if you have a nostalgic preference for specific eras or if the consumption leans toward recent music.
+
+- Year: Enables detailed trends for a particular year, highlighting significant releases or listening patterns for that year.
 
 ![Filters](https://github.com/Lumikter/My_Spotify_Listening_Data_Analysis/blob/main/Visualitations/filters.png)
 
-- Summary with key metrics
-  
+Summary with key metrics
+
+- Total Minutes Listened (401 mil): Over the past year, I reached 76.78k minutes listened, an 11% increase from the previous year (69.21k minutes). This growth might be linked to more free time or the discovery of new musical sources.
+
+- Total Tracks Played (1 mil): Among 1 million tracks played, the most played was "You Get What You Give", totaling 4.84k minutes. This accounts for 1.21% of the total, showing that while I have clear favorites, I also consistently explore new music.
+
+- Total Unique Artists Played (531): Coldplay stands out as the favorite artist, with 14.47k minutes listened, equivalent to 3.60% of the total, confirming the affinity for their melodic and emotional style.
+
+- Total Unique Genres Played (13): This indicates that rock is not only the main genre but an essential part of the musical experience.
+
+- Total Unique Subgenres Played (79): This subgenre reinforces the preference for a mix of melody and energy, while exploring other subgenres highlights a broad musical openness.
+
 ![KPI](https://github.com/Lumikter/My_Spotify_Listening_Data_Analysis/blob/main/Visualitations/KPI.png)
 
 **2. Distribution of Album vs Single Tracks**
@@ -157,6 +183,10 @@ The inclusion of countries like Germany and Japan indicates an interest in music
 
 **10. Yearly Trends of Listening Time by Genre**
 
+The rock genre consistently dominates throughout the analysis period, representing the largest share of total minutes listened. Starting in 2018, its popularity grows significantly, peaking in 2024 with 40k minutes. This reflects a strong personal preference for this genre and consistent engagement over the years. Electronic music emerges as the second most significant genre. Its share steadily increases from 2017, with a notable surge in 2023 (22k minutes) and 2024 (19k minutes). This highlights a growing interest in modern sounds and experimental rhythms. Genres like pop and Latin music maintain a moderate but consistent presence, contributing a smaller share to total minutes. Despite their lesser dominance, they remain relevant throughout the analyzed period. Other genres, such as funk and metal, appear in smaller amounts, especially in recent years. This suggests an openness to exploring less dominant musical styles, though they do not surpass the relevance of rock and electronic music. Genre listening patterns exhibit notable variations during specific periods, such as the temporary decline in 2020-2021, which might be tied to changes in personal habits or content availability.
+
+Rock and electronic music stand out as the cornerstones of your musical preferences, maintaining their dominant position even in a shifting musical landscape. Consistency over time for key genres like rock, combined with the sustained growth of electronic music, reflects a well-defined musical identity while still leaving room for exploring new trends.
+
 ![Trends](https://github.com/Lumikter/My_Spotify_Listening_Data_Analysis/blob/main/Visualitations/TrendsListenGenres.png)
 
 **11. Top 5 Artists by Listening Time**
@@ -169,6 +199,10 @@ Looking at individual artists, Alejandro Sanz, known for romantic ballads, may r
 
 ![TopArtist](https://github.com/Lumikter/My_Spotify_Listening_Data_Analysis/blob/main/Visualitations/MinutesbyArtist.png)
 
-## Conclusion
+## Conclusions
 
-The analysis highlights a profound connection to music as an essential part of my life, reflected in over 401 thousand minutes of listening and a remarkable diversity of genres, artists, and subgenres played. Rock emerges as the leading genre, alongside a strong preference for singles and Billboard hits. Listening habits reveal a consistent pattern, with peak activity during the day and a notable inclination toward artists from the United States, the UK, and Latin America. Over time, the trends show a growing interest in alternative and electronic genres, demonstrating an openness to exploring new musical landscapes. This analysis not only celebrates the user’s emotional connection to music but also provides valuable insights to enhance future listening experiences.
+- The analysis highlights a strong inclination towards genres like rock and electronic music, together representing over 75% of total listening time. Subgenres such as Pop Rock and Alternative Rock reflect an emotional and nostalgic connection, while the growing interest in modern styles like Progressive House and Synth Pop indicates a curiosity for more contemporary sounds. While primary genres dominate, there is consistent exploration of secondary styles, striking a balance between a well-defined musical identity and openness to sonic diversity.
+
+- Most of the music comes from countries like the United States, United Kingdom, Argentina, and Mexico, showcasing a preference for artists and genres from these regions. However, the presence of countries like Germany and Japan in the data highlights an interest in exploring less traditional cultures in mainstream music. This geographic diversity demonstrates a global perspective and a willingness to embrace new musical horizons.
+
+- Listening patterns remain consistent over time, with activity peaks in the morning and evening. The growth in total listening minutes (+11% annually) and exploration of independent artists and genres further reinforce adaptability to new trends and sustained curiosity for musical discovery. This also suggests an analytical and structured personality, with a preference for more complete musical experiences, such as albums, rather than individual tracks.
