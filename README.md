@@ -16,7 +16,11 @@ This dashboard aims to provide a comprehensive and personalized overview of my S
 3. Python
    - Matplotlib.
    - Seaborn.
-  
+
+## Diagram SQL
+
+![Diagram](https://github.com/Lumikter/My_Spotify_Listening_Data_Analysis/blob/main/Visualitations/DiagramSQL.png)
+
 ## Structure
 
 The dashboard is structured into several key sections, each designed to highlight different aspects of my listening habits:
