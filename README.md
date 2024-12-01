@@ -19,6 +19,8 @@ This dashboard aims to provide a comprehensive and personalized overview of my S
 
 ## Diagram SQL
 
+The data model developed in SQL Server organizes information related to Spotify, enabling a detailed analysis of user interactions with the platform. The main table, main_table, centralizes key data, such as playbacks, listening duration in minutes, usage modes (offline or incognito), and reasons for track completion. This table connects with dimensions like master_track, which includes details about songs and their Billboard rankings; master_artist, which links artists to their countries of origin; and master_album, which stores album information and release years. Additionally, the model includes playlist_genre and playlist_subgenre tables to classify genres and subgenres, enriching the analysis of musical preferences. Geographic tables, such as countries, allow for the study of trends by region using ISO codes. This relational model, based on primary and foreign keys, is designed to explore listening patterns, identify popular genres, and analyze playback data from demographic and geographic perspectives, offering a comprehensive and scalable view of the data.
+
 ![Diagram](https://github.com/Lumikter/My_Spotify_Listening_Data_Analysis/blob/main/Visualitations/DiagramSQL.png)
 
 ## Structure
