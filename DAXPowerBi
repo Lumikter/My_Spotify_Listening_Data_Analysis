@@ -1,0 +1,390 @@
+---- Percentage Minutes Acumulated by Genre ----
+
+Acumulado_minutes_pg% = 
+
+VAR Ranking = 
+RANKX(
+    ALL(
+        playlist_genre[playlist_genre]),
+        [KPI_total_minutes]
+)
+VAR MinutesAcumulated = 
+CALCULATE(
+    [KPI_total_minutes],
+    TOPN(
+        Ranking,
+        ALL(
+            playlist_genre[playlist_genre]
+        ),
+        [KPI_total_minutes]
+    )
+)
+RETURN
+
+DIVIDE(
+    MinutesAcumulated,
+    CALCULATE(
+        [KPI_total_minutes],
+        ALL(
+            playlist_genre[playlist_genre]
+        )
+    )
+)
+
+---- Percentage Minutes Acumulated by SubGenre ----
+
+Acumulado_minutes_sg% = 
+
+VAR Ranking = 
+RANKX(
+    ALL(
+        playlist_subgenre[playlist_subgenre]),
+        [KPI_total_minutes]
+)
+VAR MinutesAcumulated = 
+CALCULATE(
+    [KPI_total_minutes],
+    TOPN(
+        Ranking,
+        ALL(
+            playlist_subgenre[playlist_subgenre]
+        ),
+        [KPI_total_minutes]
+    )
+)
+RETURN
+
+DIVIDE(
+    MinutesAcumulated,
+    CALCULATE(
+        [KPI_total_minutes],
+        ALL(
+            playlist_subgenre[playlist_subgenre]
+        )
+    )
+)
+
+---- Average Minutes by Year ----
+
+KPI_AvgYearListenTrack = 
+DIVIDE (
+    SUM ( main_table[minutes] ),
+    COUNTROWS ( SUMMARIZE ( main_table, master_calendar[Year] ) )
+)
+
+---- Maximun Current Year ----
+
+KPI_CurrentlyYear = MAX(master_calendar[Year])
+
+---- Last Year Based on Maximun Current Year ----
+
+KPI_LastYear = [KPI_CurrentlyYear]-1
+
+----  Artist more listened ----
+
+KPI_Most_Played_Artist = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            master_artist,
+            master_artist[Real_Artist],
+            "TotalMinutes", SUM(main_table[minutes])
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Genre", master_artist[Real_Artist]
+    )
+
+---- Artist more Listened by Percentage of Total ----
+
+KPI_Most_Played_Artist_Listen = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            master_artist,
+            master_artist[Real_Artist],
+            "TotalMinutes", 
+            DIVIDE(
+    SUM(main_table[minutes]),
+    CALCULATE(SUM(main_table[minutes]), ALLSELECTED(main_table)
+    )
+)
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Min", [TotalMinutes] 
+    )
+
+---- Artist more Listened by Minutes ----
+
+KPI_Most_Played_Artist_Listen_Min = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            master_artist,
+            master_artist[Real_Artist],
+            "TotalMinutes", SUM(main_table[minutes])
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Min", [TotalMinutes] 
+    )
+
+----  Genre more listened ----
+
+KPI_Most_Played_Genre = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            playlist_genre,
+            playlist_genre[playlist_genre],
+            "TotalMinutes", SUM(main_table[minutes])
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Genre", playlist_genre[playlist_genre]
+    )
+
+---- Genre more Listened by Percentage of Total ----
+
+KPI_Most_Played_Genre_Listen = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            playlist_genre,
+            playlist_genre[playlist_genre],
+            "TotalMinutes", 
+            DIVIDE(
+    SUM(main_table[minutes]),
+    CALCULATE(SUM(main_table[minutes]), ALLSELECTED(main_table)
+    )
+)
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Min", [TotalMinutes] 
+    )
+
+---- Genre more Listened by Minutes ----
+
+KPI_Most_Played_Genre_Listen_Min = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            playlist_genre,
+            playlist_genre[playlist_genre],
+            "TotalMinutes", SUM(main_table[minutes])
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Min", [TotalMinutes] 
+    )
+
+----  SubGenre more listened ----
+
+KPI_Most_Played_Subgenre = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            playlist_subgenre,
+            playlist_subgenre[playlist_subgenre],
+            "TotalMinutes", SUM(main_table[minutes])
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Genre", playlist_subgenre[playlist_subgenre]
+    )
+
+---- SubGenre more Listened by Percentage of Total ----
+
+KPI_Most_Played_Subgenre_Listen = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            playlist_subgenre,
+            playlist_subgenre[playlist_subgenre],
+            "TotalMinutes", 
+            DIVIDE(
+    SUM(main_table[minutes]),
+    CALCULATE(SUM(main_table[minutes]), ALLSELECTED(main_table)
+    )
+)
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Min", [TotalMinutes] 
+    )
+
+---- SubGenre more Listened by Minutes ----
+
+KPI_Most_Played_Subgenre_Listen_Min = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            playlist_subgenre,
+            playlist_subgenre[playlist_subgenre],
+            "TotalMinutes", SUM(main_table[minutes])
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Min", [TotalMinutes] 
+    )
+
+----  Track more listened ----
+
+KPI_Most_Played_Track = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            master_track,
+            master_track[Real_Track],
+            "TotalMinutes", SUM(main_table[minutes])
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Track", master_track[Real_Track]
+    )
+
+---- Track more Listened by Percentage of Total ----
+
+KPI_Most_Played_Track_Listen = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            master_track,
+            master_track[Real_Track],
+            "TotalMinutes", 
+            DIVIDE(
+    SUM(main_table[minutes]),
+    CALCULATE(SUM(main_table[minutes]), ALLSELECTED(main_table)
+    )
+)
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Min", [TotalMinutes] 
+    )
+
+---- Track more Listened by Minutes ----
+
+KPI_Most_Played_Track_Listen_Min = 
+SELECTCOLUMNS(
+    TOPN(
+        1,
+        SUMMARIZE(
+            master_track,
+            master_track[Real_Track],
+            "TotalMinutes", SUM(main_table[minutes])
+            ),
+            [TotalMinutes],
+            DESC
+        ),
+        "Min", [TotalMinutes] 
+    )
+
+---- Percentage Variation of Minutes by Current Year ----
+
+KPI_RateListenTracksYear_Current = 
+VAR CurrentYear = [KPI_CurrentlyYear]
+RETURN
+CALCULATE([KPI_total_minutes], master_calendar[Year]=CurrentYear)
+
+---- Percentage Variation of Minutes by Last Year ----
+
+KPI_RateListenTracksYear_Previous = 
+VAR LastYear = [KPI_LastYear]
+RETURN
+CALCULATE([KPI_total_minutes],master_calendar[Year]= LastYear)
+
+---- Percentage Acumulated of Most Genre Listened ----
+
+KPI_Top_Genre_Listened = 
+DIVIDE (
+    CALCULATE (
+        SUM ( main_table[minutes] ),
+        playlist_genre[playlist_genre] = "Rock"
+    ),
+    SUM ( main_table[minutes] )
+)
+
+---- Total Unique Artist ----
+
+KPI_Total_Artist = DISTINCTCOUNT(master_artist[Real_Artist])
+
+---- Total Unique Genre ----
+
+KPI_total_count_genre = COUNT(playlist_genre[id_pg])
+
+---- Total Unique Subgenre ----
+
+KPI_total_subgenre = COUNT(playlist_subgenre[id_sg])
+
+---- Total Unique Track ----
+
+KPI_total_count_track = COUNT(main_table[id_tr])
+
+---- Total Unique Track by Album Track ----
+
+KPI_total_count_track_album = 
+CALCULATE(
+    DISTINCTCOUNT(main_table[id_tr]),master_track[Status_Track]="True")
+
+---- Total Unique Track by Single Track ----
+
+KPI_total_count_track_single = 
+CALCULATE(
+    DISTINCTCOUNT(main_table[id_tr]),master_track[Status_Track]="False")
+
+---- Total Unique Track by Billboard List ----
+
+KPI_total_count_track_bilboard = 
+CALCULATE(
+    DISTINCTCOUNT(main_table[id_tr]),master_track[billboard_track]="True")
+
+---- Total Unique Track by Non Rated List ----
+
+KPI_total_count_track_non_bilboard = 
+CALCULATE(
+    DISTINCTCOUNT(main_table[id_tr]),master_track[billboard_track]="False")
+
+---- Total Minutes Listened ----
+
+KPI_total_minutes = SUM(main_table[minutes])
+
+---- Total Track Listened ----
+
+KPI_total_track = 
+DISTINCTCOUNT(master_track[id_tr])
+
+---- Percentage Variation Minutes Year by Year  ----
+
+KPI_VariationCurrentLastYear = 
+VAR _up_arrow = UNICHAR(129137)
+VAR _down_arrow = UNICHAR(129139)
+VAR Variation =
+ROUND((DIVIDE(([KPI_RateListenTracksYear_Current]-[KPI_RateListenTracksYear_Previous]),[KPI_RateListenTracksYear_Previous],0)*100),0)
+
+RETURN
+IF(Variation<0, Variation&" % "&_down_arrow,Variation&" % "&_up_arrow)
